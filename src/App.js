@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import Home from "./components/layout/pages/Home";
-import About from "./components/layout/pages/About";
-import NotFound from "./components/layout/pages/NotFound";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import NotFound from "./components/pages/NotFound";
 
 function App() {
   return (
