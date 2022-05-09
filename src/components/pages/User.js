@@ -3,12 +3,15 @@ import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import GithubContext from "../../context/github/GithubContext";
+import RepoList from "../repos/RepoList";
 
 function User({ match }) {
-  const { getUser, user, loading } = useContext(GithubContext);
+  const { getUser, user, loading, getUserRepos, repos } =
+    useContext(GithubContext);
 
   useEffect(() => {
     getUser(match.params.login);
+    getUserRepos(match.params.login);
   }, []);
 
   const {
@@ -124,7 +127,7 @@ function User({ match }) {
           </div>
           <div className="stat">
             <div className="stat-figure text-secondary">
-              <FaUsersFriends className="text-3xl md:text-5xl" />
+              <FaUserFriends className="text-3xl md:text-5xl" />
             </div>
             <div className="stat-title pr-5">Following</div>
             <div className="stat-value pr-5 text-3xl md:text-4xl">
@@ -150,6 +153,7 @@ function User({ match }) {
             </div>
           </div>
         </div>
+        <RepoList repos={repos} />
       </div>
     </>
   );
