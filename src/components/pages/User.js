@@ -3,8 +3,8 @@ import { useEffect, useContext } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Spinner from '../../components/layout/Spinner'
 import RepoList from '../../components/repos/RepoList'
-import GithubContext from '../context/github/GithubContext'
-import { getUserAndRepos } from '../context/github/GithubActions'
+import GithubContext from '../../context/github/GithubContext'
+import { getUserAndRepos } from '../../context/github/GithubActions'
 
 function User() {
   const { user, loading, repos, dispatch } = useContext(GithubContext)
@@ -41,6 +41,9 @@ function User() {
   if (loading) {
     return <Spinner />
   }
+
+  // Validation of user's' website
+  const websiteUrl = blog?.startsWith('http') ? blog : 'https://' + blog
 
   return (
     <>
